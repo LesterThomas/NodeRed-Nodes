@@ -1,0 +1,42 @@
+<script type="text/x-red" data-template-name="systemPerformance">
+	
+	<div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="systemPerformance">
+
+	<h2><p>System Performance</p></h2>
+	</br>
+	<p>This node returns the current performance of the server/container that Node-Red is executing in. </p>
+
+    <P> It returns 3 Arrays showing the last 100 seconds (at an interval of 1 record per second). The arrays are:</P>
+    <ul>
+        <li> <b>latency</b>: The latency of the Node-Red event queue on this server. It is an indication of the load of the server.</li>
+        <li> <b>CPU</b>: The % load of the CPU</li>
+        <li> <b>memory</b>: The % memory of the CPU</li>
+    </ul>
+
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('systemPerformance',{
+        category: 'advanced-function',      // the palette category
+        color: "#A78DB2",
+        defaults: {             // defines the editable properties of the node
+            name: {value:""},			//  along with default values.
+        },
+        inputs:1,               // set the number of inputs - only 0 or 1
+        outputs:1,              // set the number of outputs - 0 to n
+        
+        icon: "systemPerformance.png",     // saved in  icons/myicon.png
+        label: function() {     // sets the default label contents
+            return this.name||this.to||"Performance";
+        },
+        labelStyle: function() { // sets the class to apply to the label
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>
