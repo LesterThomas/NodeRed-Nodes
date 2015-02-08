@@ -1,0 +1,44 @@
+<script type="text/x-red" data-template-name="sonos">
+	
+	<div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ipAddress"><i class="icon-tag"></i>IP address</label>
+        <input type="text" id="node-input-ipAddress" placeholder="ipAddress">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="sonos">
+
+	<h2><p>Sonos</p></h2>
+	</br>
+	<p>This node is a wrapper of the sonos Node.js node (<a href="https://www.npmjs.org/package/sonos" target="new">www.npmjs.org/package/sonos</a>).</p>
+
+    <P>It plays the mp3 from a URL that is passed in the msg.payload.</P>
+    
+    <p>The configuration below allows you to set the IP address of the Sonos. </p>
+
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('sonos',{
+        category: 'advanced-function',      // the palette category
+        color: "#A78DB2",
+        defaults: {             // defines the editable properties of the node
+            name: {value:""},			//  along with default values.
+            ipAddress: {value:"192.168.1.82"},
+        },
+        inputs:1,               // set the number of inputs - only 0 or 1
+        outputs:0,              // set the number of outputs - 0 to n
+        
+        icon: "sonos.png",     // saved in  icons/myicon.png
+        label: function() {     // sets the default label contents
+            return this.name||this.to||"Sonos";
+        },
+        labelStyle: function() { // sets the class to apply to the label
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>
