@@ -1,0 +1,72 @@
+<script type="text/javascript">
+    RED.nodes.registerType('drone-control-send-action',{
+        category: 'drone-control',
+        color: '#dd7777',
+        defaults: {
+            name: {value:""},
+            droneId: {value:""},
+            action: {value:"Return-to-Launch"}
+        },
+        inputs:1,
+        outputs:3,
+        inputLabels:["Input"],
+        outputLabels:["Acknowledge action","Action success","Action interrupted"],
+        icon: "droneIcon.png",
+        paletteLabel: "Drone Action",
+        label: function() {
+            if (this.name) {
+                return this.name;
+            } else {
+                if (this.droneId) {
+                    return "Drone #" + this.droneId + ":"+this.action;
+                } else {
+                    return "Drone <msg.Payload>:"+this.action;
+                }
+            }
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="drone-control-send-action">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-droneId"><i class="icon-tag"></i>Drone ID</label>
+        <input type="text" id="node-input-droneId" placeholder="Enter drone ID or pass in using msg.payload.droneId">
+    </div>
+    <div class="form-row">
+        <label for="node-input-action"><i class="icon-tag"></i>Action</label>
+        <select  id="node-input-action">
+            <option selected value="Takeoff">Takeoff</option>
+            <option value="Land">Land</option>
+            <option value="Return-to-Launch">Return-to-Launch</option>
+            <option value="Start-Mission">Start-Mission</option>
+            <option value="Goto-Absolute">Goto-Absolute</option>
+            <option value="Goto-Relative-Home">Goto-Relative-Home</option>
+            <option value="Goto-Relative-Current">Goto-Relative-Current</option>
+        </select>
+    <div class="form-row">
+        <br /><br />
+        <p>Input message required:</p>
+        <ul>
+            <li>Takeoff: <i>height</i></li>
+            <li>Land: </li>
+            <li>Return-to-Launch: </li>
+            <li>Start-Mission: </li>
+            <li>Goto-Absolute: <i>lat, lon, alt</i></li>
+            <li>Goto-Relative-Home: <i>east, north, up</i></li>
+            <li>Goto-Relative-Current: <i>east, north, up</i></li>
+        </ul>
+
+        <br /><br />
+        <p>The output sends acknowledgement messate (top), successful completion (middle) and error events (bottom).
+    </div>
+
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="drone-control-send-action">
+    <p>Send an action to the drone. You can set the drone ID in the <i>msg.payload.droneId</i> or in the Node properties. You set the action in the Node properties (e.g. land, goto-relative-current).</p>
+</script>

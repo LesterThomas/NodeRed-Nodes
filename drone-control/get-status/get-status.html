@@ -1,0 +1,62 @@
+<script type="text/javascript">
+    RED.nodes.registerType('drone-control-get-status',{
+        category: 'drone-control',
+        color: '#dd7777',
+        defaults: {
+            name: {value:""},
+            droneId: {value:""},
+            attribute: {value:"all"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "droneIcon.png",
+        paletteLabel: "Drone Status",
+        label: function() {
+            if (this.name) {
+                return this.name;
+            } else {
+                if (this.droneId) {
+                    return "Drone #" + this.droneId + ":"+this.attribute;
+                } else {
+                    return "Drone <msg.Payload>:"+this.attribute;
+                }
+            }
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="drone-control-get-status">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-droneId"><i class="icon-tag"></i>Drone ID</label>
+        <input type="text" id="node-input-droneId" placeholder="Enter drone ID or pass in using msg.payload.droneId">
+    </div>
+    <div class="form-row">
+        <label for="node-input-attribute"><i class="icon-tag"></i>Attribute</label>
+        <select  id="node-input-attribute">
+            <option selected value="all">all</option>
+            <option value="gimbal">gimbal</option>
+            <option value="rangefinder">rangefinder</option>
+            <option value="battery">battery</option>
+            <option value="groundspeed">groundspeed</option>
+            <option value="airspeed">airspeed</option>
+            <option value="heading">heading</option>
+            <option value="global_frame">global_frame</option>
+            <option value="local_frame">local_frame</option>
+            <option value="attitude">attitude</option>
+            <option value="gps_0">gps_0</option>
+            <option value="mode">mode</option>
+            <option value="ekf_ok">ekf_ok</option>
+            <option value="velocity">velocity</option>
+            <option value="armed">armed</option>
+            <option value="last_heartbeat">last_heartbeat</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="drone-control-get-status">
+    <p>Returns the current status for the drone. You can set the drone ID in the <i>msg.payload.droneId</i> or in the Node properties. You can also ask for all status details or one of the specific deails (e.g. heading, battery, airspeed).</p>
+</script>
