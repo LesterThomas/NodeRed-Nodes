@@ -58,6 +58,7 @@ module.exports = function(RED) {
 				        node.currentActionId=-1;
 				    } else 
 				    {
+				        console.log("repeat monitor status");
 				    	setTimeout(function(){callHTTPGetStatus(node,msg)},1000);
 				    }
 		    	});
@@ -111,6 +112,7 @@ module.exports = function(RED) {
 					        console.log("Sent action acknowledge message for action "+ node.currentActionId);
 		                	node.status({fill:"green",shape:"dot",text:node.action});
 					        //check for status updates
+					        console.log("starting to monitor status");
 				        	callHTTPGetStatus(node,msg);
 					    }
 			        }
