@@ -1,12 +1,15 @@
 {
 "name": "node-red-contrib-drone-control",
-"version": "0.1",
+"version": "0.1.2",
 "description": "Experimental node-red node for controlling drone-control API (at http://droneapi.ddns.net:1235).",
   "author": {
     "name": "Lester Thomas",
     "email":"lesterthomas@hotmail.com"
   },
-"dependencies": {},
+  "dependencies": {
+    "request": "^2.81.0"
+      },
+
 "keywords": [ "node-red" ],
 "node-red"     : {
     "nodes": {
@@ -20,3 +23,4 @@
     "url": "git+https://github.com/lesterthomas/NodeRed-Nodes"
   }
 }
+   	
