@@ -1,78 +1,22 @@
 {
-  "_args": [
-    [
-      "drone-control-get-status",
-      "/home/lester/.node-red"
-    ]
-  ],
-  "_from": "drone-control-get-status@latest",
-  "_id": "drone-control-get-status@0.1.1",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/get-status",
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/drone-control-get-status-0.1.7.tgz_1467267796347_0.30429319734685123"
-  },
-  "_npmUser": {
-    "email": "shiju@amt.in",
-    "name": "shijuamt"
-  },
-  "_npmVersion": "1.4.9",
-  "_phantomChildren": {},
-  "_requested": {
-    "name": "drone-control-get-status",
-    "raw": "drone-control-get-status",
-    "rawSpec": "",
-    "scope": null,
-    "spec": "latest",
-    "type": "tag"
-  },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/drone-control-get-status/-/drone-control-get-status-0.1.7.tgz",
-  "_shasum": "c2ca7b8cea8a34e2c2621f28d0e947238caee601",
-  "_shrinkwrap": null,
-  "_spec": "drone-control-get-status",
-  "_where": "/home/lester/.node-red",
+"name": "node-red-contrib-drone-control",
+"version": "0.1",
+"description": "Experimental node-red node for controlling drone-control API (at http://droneapi.ddns.net:1235).",
   "author": {
-    "name": "Shiju AMT"
+    "name": "Lester Thomas",
+    "email":"lesterthomas@hotmail.com"
   },
-  "bugs": {
-    "url": "https://github.com/shijuamt/drone-get-status/issues"
-  },
-  "dependencies": {},
-  "description": "A sample node for node-red to convert lower case",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "c2ca7b8cea8a34e2c2621f28d0e947238caee601",
-    "tarball": "https://registry.npmjs.org/drone-control-get-status/-/drone-control-get-status-0.1.7.tgz"
-  },
-  "homepage": "https://github.com/shijuamt/drone-get-status",
-  "keywords": [
-    "node-red"
-  ],
-  "license": "MIT",
-  "maintainers": [
-    {
-      "name": "shijuamt",
-      "email": "shiju@amt.in"
-    }
-  ],
-  "name": "drone-control-get-status",
-  "node-red": {
+"dependencies": {},
+"keywords": [ "node-red" ],
+"node-red"     : {
     "nodes": {
-      "get-status": "get-status/get-status.js",
-      "send-action": "send-action/send-action.js"
+        "get-status": "get-status/get-status.js",
+        "send-action": "send-action/send-action.js"
     }
-  },
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
+},
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shijuamt/drone-get-status.git"
-  },
-  "version": "0.1.7"
+    "url": "git+https://github.com/lesterthomas/NodeRed-Nodes"
+  }
 }
