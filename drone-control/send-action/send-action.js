@@ -12,7 +12,7 @@ module.exports = function(RED) {
         var node = this;
 
 		var callHTTPGetStatus= function (node,msg){
-
+			var str='';
 			if (node.currentActionId==-1){
 				return   //no need to check status
 			}
@@ -23,15 +23,18 @@ module.exports = function(RED) {
 			}else{
 				droneNo=msg.payload.droneId;
 			}
-			url='http://localhost:1235/vehicle/'+droneNo+'/action';
+			url='http://droneapi.ddns.net:1235/vehicle/'+droneNo+'/action';
 			console.log(url);
 			require('http').get(url, (res) => {
 			    res.setEncoding('utf8');
-			    res.on('data', function (body) {
+			    res.on('data', function (chunk) {
+			    	str+=chunk;
+			    });
+			    res.on('end', function () {
 			    	console.log("Get action status returns");
-			    	console.log(body);
+			    	console.log(str);
 			    	console.log("***************************************************************");
-			    	var output=JSON.parse(body);
+			    	var output=JSON.parse(str);
 			    	var targetAction;
 			    	var actionInterrupted=false;
 			    	for(var i=output.actions.length-1;i>=0;i--) { //look through the array backwards to find our action
@@ -76,7 +79,7 @@ module.exports = function(RED) {
 			}
 			var actionData=msg.payload;
 			actionData.name=node.action;
-			url='http://localhost:1235/vehicle/'+droneNo+'/action';
+			url='http://droneapi.ddns.net:1235/vehicle/'+droneNo+'/action';
 			console.log(url);
 			console.log(msg.payload);
 

@@ -18,18 +18,21 @@ module.exports = function(RED) {
 			}else{
 				droneNo=msg.payload.droneId;
 			}
-			if (node.attribute=="all"){
-				url='http://localhost:1235/vehicle/'+droneNo+'/';
-			} else {
-				url='http://localhost:1235/vehicle/'+droneNo+'/'+node.attribute;
-			}
+			url='http://droneapi.ddns.net:1235/vehicle/'+droneNo;
+			
 			console.log(url);
 			require('http').get(url, (res) => {
 			    res.setEncoding('utf8');
 			    res.on('data', function (body) {
 			    	node.status({});
 			    	var output=JSON.parse(body);
-			        msg.payload=output.vehicleStatus;
+			    	if (node.attribute=="all"){
+			    		msg.payload=output;
+			    	}
+			    	else {
+			    		msg.payload=output[node.attribute];
+			    	}
+
 			        console.log("sending message");
 			        node.send(msg);
 		    	});
