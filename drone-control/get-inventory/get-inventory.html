@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType('drone-control-get-inventory',{
+        category: 'drone-control',
+        color: '#dd7777',
+        defaults: {
+            name: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "droneIcon.png",
+        paletteLabel: "Drone Inventory",
+        label: function() {
+            if (this.name) {
+                return this.name;
+            } else {
+                return "Inventory";
+            }
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="drone-control-get-inventory">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="drone-control-get-inventory">
+    <p>Returns the current inventory of drones. Returns a message for each drone found.</p>
+</script>

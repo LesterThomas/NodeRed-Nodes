@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    RED.nodes.registerType('drone-control-disconnect-drone',{
+        category: 'drone-control',
+        color: '#dd7777',
+        defaults: {
+            name: {value:""},
+            droneId: {value:""}
+       },
+        inputs:1,
+        outputs:2,
+        inputLabels:["Input"],
+        icon: "droneIcon.png",
+        paletteLabel: "Disconnect",
+        label: function() {
+            if (this.name) {
+                return this.name;
+            } else {
+                return "Disconnect";
+            }
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="drone-control-disconnect-drone">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-droneId"><i class="icon-tag"></i>Drone ID</label>
+        <input type="text" id="node-input-droneId" placeholder="Enter drone ID or pass in using msg.payload.id">
+    </div>
+    <div class="form-row">
+
+        <br /><br />
+        <p>The output sends acknowledgement messate (top), or error event (bottom).
+    </div>
+
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="drone-control-disconnect-drone">
+    <p>Disconnect drone. You can set the drone ID in the <i>msg.payload.id</i> or in the Node properties. </p>
+</script>

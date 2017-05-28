@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    RED.nodes.registerType('drone-control-create-simulated',{
+        category: 'drone-control',
+        color: '#dd7777',
+        defaults: {
+            name: {value:""},
+            droneName: {value:""}
+        },
+        inputs:1,
+        outputs:2,
+        inputLabels:["Input"],
+        icon: "droneIcon.png",
+        paletteLabel: "Create",
+        label: function() {
+            if (this.name) {
+                return this.name;
+            } else {
+                if (this.droneName) {
+                    return "Drone #" + this.droneName + ":"+this.action;
+                } else {
+                    return "Create Drone";
+                }
+            }
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="drone-control-create-simulated">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-droneName"><i class="icon-tag"></i>Drone Name</label>
+        <input type="text" id="node-input-droneName" placeholder="Enter drone name or pass in using msg.payload.droneName">
+    </div>
+    <div class="form-row">
+
+        <br /><br />
+        <p>The output sends acknowledgement messate (top), or error events (bottom).
+    </div>
+
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="drone-control-create-simulated">
+    <p>Create a simulated drone. You can set the drone Name in the <i>msg.payload.droneName</i> or in the Node properties. </p>
+</script>
