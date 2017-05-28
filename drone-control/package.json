@@ -1,26 +1,95 @@
 {
-"name": "node-red-contrib-drone-control",
-"version": "0.1.2",
-"description": "Experimental node-red node for controlling drone-control API (at http://droneapi.ddns.net:1235).",
+  "_args": [
+    [
+      {
+        "raw": "node-red-contrib-drone-control",
+        "scope": null,
+        "escapedName": "node-red-contrib-drone-control",
+        "name": "node-red-contrib-drone-control",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\leste\\.node-red"
+    ]
+  ],
+  "_from": "node-red-contrib-drone-control@latest",
+  "_id": "node-red-contrib-drone-control@0.1.2",
+  "_inCache": true,
+  "_location": "/node-red-contrib-drone-control",
+  "_nodeVersion": "6.10.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/node-red-contrib-drone-control-0.1.2.tgz_1495745708680_0.9412389150820673"
+  },
+  "_npmUser": {
+    "name": "lesterthomas",
+    "email": "lesterthomas@hotmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "node-red-contrib-drone-control",
+    "scope": null,
+    "escapedName": "node-red-contrib-drone-control",
+    "name": "node-red-contrib-drone-control",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-red-contrib-drone-control/-/node-red-contrib-drone-control-0.1.2.tgz",
+  "_shasum": "d5b0b81125211ec75c396f04d5237f48d2d7fb48",
+  "_shrinkwrap": null,
+  "_spec": "node-red-contrib-drone-control",
+  "_where": "C:\\Users\\leste\\.node-red",
   "author": {
     "name": "Lester Thomas",
-    "email":"lesterthomas@hotmail.com"
+    "email": "lesterthomas@hotmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/lesterthomas/NodeRed-Nodes/issues"
   },
   "dependencies": {
     "request": "^2.81.0"
-      },
-
-"keywords": [ "node-red" ],
-"node-red"     : {
-    "nodes": {
-        "get-status": "get-status/get-status.js",
-        "send-action": "send-action/send-action.js"
-    }
-},
+  },
+  "description": "Experimental node-red node for controlling drone-control API (at http://droneapi.ddns.net:1235).",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "d5b0b81125211ec75c396f04d5237f48d2d7fb48",
+    "tarball": "https://registry.npmjs.org/node-red-contrib-drone-control/-/node-red-contrib-drone-control-0.1.2.tgz"
+  },
+  "homepage": "https://github.com/lesterthomas/NodeRed-Nodes#readme",
+  "keywords": [
+    "node-red"
+  ],
   "license": "MIT",
+  "maintainers": [
+    {
+      "name": "lesterthomas",
+      "email": "lesterthomas@hotmail.com"
+    }
+  ],
+  "name": "node-red-contrib-drone-control",
+  "node-red": {
+    "nodes": {
+      "create-simulated": "create-simulated/create-simulated.js",
+      "get-status": "get-status/get-status.js",
+      "get-inventory": "get-inventory/get-inventory.js",
+      "send-action": "send-action/send-action.js",
+      "disconnect-drone": "disconnect-drone/disconnect-drone.js"
+      
+    }
+  },
+  "optionalDependencies": {},
+  "readme": "Experimental nodes to call dronecontrol API.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lesterthomas/NodeRed-Nodes"
-  }
+    "url": "git+https://github.com/lesterthomas/NodeRed-Nodes.git"
+  },
+  "scripts": {},
+  "version": "0.1.2"
 }
-   	

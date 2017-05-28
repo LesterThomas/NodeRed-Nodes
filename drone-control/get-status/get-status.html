@@ -32,7 +32,7 @@
     </div>
     <div class="form-row">
         <label for="node-input-droneId"><i class="icon-tag"></i>Drone ID</label>
-        <input type="text" id="node-input-droneId" placeholder="Enter drone ID or pass in using msg.payload.droneId">
+        <input type="text" id="node-input-droneId" placeholder="Enter drone ID or pass in using msg.payload.id">
     </div>
     <div class="form-row">
         <label for="node-input-attribute"><i class="icon-tag"></i>Attribute</label>
@@ -58,5 +58,5 @@
 </script>
 
 <script type="text/x-red" data-help-name="drone-control-get-status">
-    <p>Returns the current status for the drone. You can set the drone ID in the <i>msg.payload.droneId</i> or in the Node properties. You can also ask for all status details or one of the specific deails (e.g. heading, battery, airspeed).</p>
+    <p>Returns the current status for the drone. You can set the drone ID in the <i>msg.payload.id</i> or in the Node properties. You can also ask for all status details or one of the specific deails (e.g. heading, battery, airspeed).</p>
 </script>

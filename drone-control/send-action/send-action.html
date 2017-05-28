@@ -20,7 +20,7 @@
                 if (this.droneId) {
                     return "Drone #" + this.droneId + ":"+this.action;
                 } else {
-                    return "Drone <msg.Payload>:"+this.action;
+                    return "Drone :"+this.action;
                 }
             }
         }
@@ -34,7 +34,7 @@
     </div>
     <div class="form-row">
         <label for="node-input-droneId"><i class="icon-tag"></i>Drone ID</label>
-        <input type="text" id="node-input-droneId" placeholder="Enter drone ID or pass in using msg.payload.droneId">
+        <input type="text" id="node-input-droneId" placeholder="Enter drone ID or pass in using msg.payload.id">
     </div>
     <div class="form-row">
         <label for="node-input-action"><i class="icon-tag"></i>Action</label>
@@ -68,5 +68,5 @@
 </script>
 
 <script type="text/x-red" data-help-name="drone-control-send-action">
-    <p>Send an action to the drone. You can set the drone ID in the <i>msg.payload.droneId</i> or in the Node properties. You set the action in the Node properties (e.g. land, goto-relative-current).</p>
+    <p>Send an action to the drone. You can set the drone ID in the <i>msg.payload.id</i> or in the Node properties. You set the action in the Node properties (e.g. land, goto-relative-current).</p>
 </script>

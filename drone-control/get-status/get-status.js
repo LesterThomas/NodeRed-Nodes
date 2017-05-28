@@ -10,22 +10,25 @@ module.exports = function(RED) {
         var node = this;
 
 		var callHTTPGet= function (node,msg){
-
+			var str='';
 			var url;
 			var droneNo;
 			if (node.droneId) {
 				droneNo=node.droneId;
 			}else{
-				droneNo=msg.payload.droneId;
+				droneNo=msg.payload.id;
 			}
 			url='http://droneapi.ddns.net:1235/vehicle/'+droneNo;
 			
 			console.log(url);
 			require('http').get(url, (res) => {
 			    res.setEncoding('utf8');
-			    res.on('data', function (body) {
+			    res.on('data', function (chunk) {
+			    	str+=chunk;
+			    });
+			    res.on('end', function () {
 			    	node.status({});
-			    	var output=JSON.parse(body);
+			    	var output=JSON.parse(str);
 			    	if (node.attribute=="all"){
 			    		msg.payload=output;
 			    	}
