@@ -14,7 +14,7 @@
     ]
   ],
   "_from": "node-red-contrib-drone-control@latest",
-  "_id": "node-red-contrib-drone-control@0.1.2",
+  "_id": "node-red-contrib-drone-control@0.1.3",
   "_inCache": true,
   "_location": "/node-red-contrib-drone-control",
   "_nodeVersion": "6.10.3",
@@ -91,5 +91,5 @@
     "url": "git+https://github.com/lesterthomas/NodeRed-Nodes.git"
   },
   "scripts": {},
-  "version": "0.1.2"
+  "version": "0.1.3"
 }
