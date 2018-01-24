@@ -19,7 +19,7 @@ module.exports = function(RED) {
 				droneNo=msg.payload.id;
 				console.log('Setting to msg id '+droneNo);
 			}
-			url='http://droneapi.ddns.net:1235/vehicle/'+ droneNo;
+			url='http://droneapi.ddns.net/vehicle/'+ droneNo;
 			console.log(url);
 			console.log(msg.payload);
 			node.status({fill:"green",shape:"dot",text:"disconnecting"});
