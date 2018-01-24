@@ -17,7 +17,7 @@ module.exports = function(RED) {
 
 				var str='';
 				var url;
-				url='http://droneapi.ddns.net:1235/vehicle/'+msg.temp.droneNo+'/action';
+				url='http://droneapi.ddns.net/vehicle/'+msg.temp.droneNo+'/action';
 				//console.log(url);
 				require('http').get(url, (res) => {
 				    res.setEncoding('utf8');
