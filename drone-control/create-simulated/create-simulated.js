@@ -18,7 +18,7 @@ module.exports = function(RED) {
 			}else{
 				droneName=msg.payload.droneName;
 			}
-			url='http://droneapi.ddns.net:1235/vehicle';
+			url='http://droneapi.ddns.net/vehicle';
 			console.log(url);
 			console.log(msg.payload);
 			createData={"vehicleType":"simulated","name":droneName};
