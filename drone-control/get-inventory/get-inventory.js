@@ -13,7 +13,7 @@ module.exports = function(RED) {
 					var str='';
 
 					var url;
-					url='http://droneapi.ddns.net:1235/vehicle';
+					url='http://droneapi.ddns.net/vehicle';
 					
 					console.log(url);
 					require('http').get(url, (res) => {
