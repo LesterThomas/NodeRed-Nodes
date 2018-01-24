@@ -20,7 +20,7 @@ module.exports = function(RED) {
 					}else{
 						droneNo=msg.payload.id;
 					}
-					url='http://droneapi.ddns.net:1235/vehicle/'+droneNo;
+					url='http://droneapi.ddns.net/vehicle/'+droneNo;
 					
 					console.log(url);
 					require('http').get(url, (res) => {
