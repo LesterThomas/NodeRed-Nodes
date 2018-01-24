@@ -1,5 +1,6 @@
 # node-red-drone-control
-node-red node for controlling drone-control API (at http://droneapi.ddns.net:1235). Note: This node-red-node and the drone-control API are experimental.
+node-red node for controlling drone-control API (at http://droneapi.ddns.net). The UI is at http://droneapi.ddns.net/static/app
+Note: This node-red-node and the drone-control API are experimental.
 
 ## Installation
 npm -g install node-red-drone-control
