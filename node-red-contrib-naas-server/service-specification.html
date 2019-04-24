@@ -1,0 +1,110 @@
+<script type="text/javascript">
+    RED.nodes.registerType('service-specification', {
+        category: '5G Services',
+        color: '#a6bdff',
+        defaults: {
+            name: {value:""},
+            server: {value:"", type:"naas-server"},
+            serviceSpecArray: {value:[]},
+            serviceOrderLine: {value:null},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name || "service-specification";
+        },
+        oneditprepare: function() {
+            // Load the data from the server and create empty HTML elements
+            $.getJSON('service-specification?id='+this.id, function(data) {
+                // The response is a json array, containing the data to be displayed
+                this.serviceSpecArray=data;
+                console.log(data.length + " services found");
+                var selectedIndex=0;
+                // Show services in the dropdown and build corresponding HTML elements (in DIV elements that can be shown/hidden)
+                for (i = 0; i < data.length; i++) {
+                    var serviceSpec = data[i];
+                    console.log(serviceSpec);
+                    if (this.serviceOrderLine) {
+                        if (serviceSpec.name == this.serviceOrderLine.name){
+                            selectedIndex = i;
+                        }
+                    }
+                    $('#node-input-service').append('<option value="' + i + '">' + serviceSpec.name + '</option>');
+                    $('#dynamic-form').append('<div id="dynamic-form'+ i + '" ></div>');
+                    $('#dynamic-form'+ i ).append('<p>'+ serviceSpec.description +'</p>');
+                    for (var j=0;j<serviceSpec.serviceSpecCharacteristic.length;j++){ 
+                        $('#dynamic-form'+ i ).append('<div class="form-row" ><label><i class="icon-tag"></i> ' + serviceSpec.serviceSpecCharacteristic[j].name + '</label><input type="text" id="' + serviceSpec.id + '-' + j +'" placeholder="' + serviceSpec.serviceSpecCharacteristic[j].description + '"></div>');
+                    }
+                }
+                
+                //load the actual data from this node 
+                if (this.serviceOrderLine){
+                    console.log('this.serviceOrderLine exists');
+                    console.log(this.serviceOrderLine);
+                    //select the correct service and fill the text input boxes
+                    showHideDynamic(selectedIndex);
+                    for (var j=0;j<this.serviceOrderLine.serviceCharacteristic.length;j++){ 
+                        $('#' + this.serviceOrderLine.id + '-' + j).val(this.serviceOrderLine.serviceCharacteristic[j].value);
+                    }
+
+                } else {
+                    showHideDynamic(0); //select the first service
+                }
+                
+            }.bind(this));          
+
+        },
+        oneditsave: function() {
+            var selectedService = $('#node-input-service').children("option:selected").val();
+            console.log('In oneditsave with selected service ' + selectedService);
+            var selectedServiceSpec = this.serviceSpecArray[selectedService];
+            console.log('selectedServiceSpec');
+            console.log(selectedServiceSpec);
+            this.name = selectedServiceSpec.name;
+            //build serviceOrderLine for selected serviceSpec and populate characteristics with values from dynamic form
+            this.serviceOrderLine = {name: selectedServiceSpec.name, id: selectedServiceSpec.id, serviceCharacteristic: []};
+            for (var j=0;j<selectedServiceSpec.serviceSpecCharacteristic.length;j++){ 
+                var serviceCharacteristic = {name: selectedServiceSpec.serviceSpecCharacteristic[j].name, id: selectedServiceSpec.serviceSpecCharacteristic[j].id, value:  $('#' + selectedServiceSpec.id + '-' + j).val()}
+                this.serviceOrderLine.serviceCharacteristic.push( serviceCharacteristic); 
+            }
+            console.log('this.serviceOrderLine');
+            console.log(this.serviceOrderLine);
+            console.log('posting to service-specification?id='+this.id);
+            $.post('service-specification?id='+this.id, this.serviceOrderLine, function(response) {
+                console.log('POST returned ' + response);
+            });
+        }
+    });
+
+
+
+    function showHideDynamic(showId){
+        console.log("in showHideDynamic with id" + showId)
+        for (var i=0;i<$("#node-input-service option").size(); i++){
+            $('#dynamic-form'+ i ).hide();
+        }
+        //show the dynamic field with showId
+        $('#dynamic-form'+ showId ).show();
+        $("#node-input-service").val(showId);
+    }
+</script>
+
+<script type="text/x-red" data-template-name="service-specification">
+    <div class="form-row">
+        <label for="node-input-server"><i class="icon-tag"></i> Server</label>
+        <input type="text" id="node-input-server" placeholder="Server">
+    </div>    
+    <div class="form-row">
+            <label for="node-input-service"><i class="icon-tag"></i> Service</label>
+            <select id="node-input-service" onChange="showHideDynamic(this.selectedIndex);"/>
+    </div>   
+    <div class="form-row">
+            <div id="dynamic-form" />
+    </div>   
+           
+</script>
+
+<script type="text/x-red" data-help-name="service-specification">
+    <p>A node that allows you to configure a TM Forum Service Spec and generate an order line for a Service Order.</p>
+</script>

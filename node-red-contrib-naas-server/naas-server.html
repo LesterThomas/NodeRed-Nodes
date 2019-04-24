@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    RED.nodes.registerType('naas-server',{
+        category: 'config',
+        defaults: {
+            host: {required:true},
+            apikeyname: {required:true},
+            apikeyvalue: {required:true}
+        },
+        label: function() {
+            return this.host + ":" + this.apikeyname;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="naas-server">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="icon-bookmark"></i> Host</label>
+        <input type="text" id="node-config-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-apikeyname"><i class="icon-tag"></i> API Key Name</label>
+        <input type="text" id="node-config-input-apikeyname">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-apikeyvalue"><i class="icon-tag"></i> API Key Value</label>
+        <input type="text" id="node-config-input-apikeyvalue">
+    </div>
+</script>
